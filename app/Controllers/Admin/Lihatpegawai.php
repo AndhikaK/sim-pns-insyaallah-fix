@@ -105,4 +105,16 @@ class Lihatpegawai extends BaseController
 
         return view('admin/lihat_pegawai', $data);
     }
+
+    public function deletePegawai($nip)
+    {
+        try {
+            $this->pegawaiModel->delete($nip);
+            session()->setFlashdata('success-delete', "NIP $nip berhasil dihapus!");
+        } catch (\Exception $e) {
+            session()->setFlashdata('failed-delete', $e);
+        }
+
+        return redirect()->back();
+    }
 }
