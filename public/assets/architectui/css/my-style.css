@@ -88,4 +88,8 @@ input[type="text"]:read-only {
     cursor: pointer;
 }
 
+th, td {
+  text-transform: capitalize;
+}
+
 /* detail pegawai */

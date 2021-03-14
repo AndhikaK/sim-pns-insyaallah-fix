@@ -4,9 +4,15 @@
 <?= $this->section('content') ?>
 
 <!-- main content  -->
-<div class="row">
+<div class="row mb-5">
     <div class="col-12">
         <div class="card p-3 mx-1">
+            <!-- Biodata -->
+            <div class="row justify-content-end">
+                <a href=""><button class="btn btn-warning mr-2"><i class="pe-7s-print"></i> Print</button></a>
+                <a href=""><button class="btn btn-primary mr-3">Edit Biodata</button></a>
+            </div>
+            <hr>
             <div class="row">
                 <div class="col-2">
                     <form action="<?= base_url('admin/detailpegawai/saveProfil/' . $detailPegawai['nip']) ?>" method="POST" enctype="multipart/form-data">
@@ -111,6 +117,163 @@
                     </div>
                 </div>
             </div>
+            <!-- biodata -->
+            <hr>
+            <!-- riwayat pekerjaan -->
+            <div class="row">
+                <div class="col text-center">
+                    <h4>Riwayat Pekerjaan</h4>
+                </div>
+                <div class="col-auto">
+                    <a href="" class="btn btn-primary">Edit</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr class="table-active">
+                                <?php foreach ($colRwyPekerjaan as $colName => $colValue) : ?>
+                                    <th><?= $colName ?></th>
+                                <?php endforeach ?>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($riwayatPekerjaan as $item) : ?>
+                                <tr>
+                                    <?php foreach ($colRwyPekerjaan as $colName => $colValue) : ?>
+                                        <td><?= $item[$colValue] ?></td>
+                                    <?php endforeach ?>
+                                </tr>
+                            <?php endforeach ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- riwayat pekerjaan -->
+            <hr>
+            <!-- riwayat golongan  -->
+            <div class="row">
+                <div class="col text-center">
+                    <h4>Riwayat Golongan</h4>
+                </div>
+                <div class="col-auto">
+                    <a href="" class="btn btn-primary">Edit</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr class="table-active">
+                                <?php foreach ($colRwyGolongan as $colName => $colValue) : ?>
+                                    <th><?= $colName ?></th>
+                                <?php endforeach ?>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($riwayatGolongan as $item) : ?>
+                                <tr>
+                                    <?php foreach ($colRwyGolongan as $colName => $colValue) : ?>
+                                        <td><?= $item[$colValue] ?></td>
+                                    <?php endforeach ?>
+                                </tr>
+                            <?php endforeach ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- riwayat golongan -->
+            <hr>
+            <!-- Pendidikan -->
+            <div class="row">
+                <div class="col text-center">
+                    <h4>Pendidikan</h4>
+                </div>
+                <div class="col-auto">
+                    <a href="" class="btn btn-primary">Edit</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6 pr-0">
+                    <div class="bg-primary p-2 text-white">Pendidikan Umum</div>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr class="table-active">
+                                <th>Tahun Kelulusan</th>
+                                <th>Pendidikan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($riwayatDikum as $item) : ?>
+                                <tr class="table-light">
+                                    <td><?= $item['tahun_lulus'] ?></td>
+                                    <td><?= $item['jenjang'] ?></td>
+                                </tr>
+                            <?php endforeach ?>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-6 pl-0">
+                    <div class="bg-primary p-2 text-white">Pendidikan Pengembangan Umum</div>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr class="table-active">
+                                <th>Tahun Kelulusan</th>
+                                <th>Pendidikan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($riwayatDikbangum as $item) : ?>
+                                <tr class="table-light">
+                                    <td><?= $item['tahun_lulus'] ?></td>
+                                    <td><?= $item['nama_dikbangum'] ?></td>
+                                </tr>
+                            <?php endforeach ?>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-6 pr-0">
+                    <div class="bg-primary p-2 text-white">Pendidikan Pengembangan Spesialis</div>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr class="table-active">
+                                <th>Tahun Kelulusan</th>
+                                <th>Pendidikan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($riwayatDikbangspes as $item) : ?>
+                                <tr class="table-light">
+                                    <td><?= $item['tahun_lulus'] ?></td>
+                                    <td><?= $item['nama_dikbangspes'] ?></td>
+                                </tr>
+                            <?php endforeach ?>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-6 pl-0">
+                    <div class="bg-primary p-2 text-white">Pendidikan Kepolisian</div>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr class="table-active">
+                                <th>Tahun Kelulusan</th>
+                                <th>Pendidikan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($riwayatDikpol as $item) : ?>
+                                <tr class="table-light">
+                                    <td><?= $item['tahun_lulus'] ?></td>
+                                    <td><?= $item['nama_dikpol'] ?></td>
+                                </tr>
+                            <?php endforeach ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- Pendidikan -->
+
         </div>
     </div>
 </div>
