@@ -14,4 +14,9 @@ class Home extends BaseController
 
 		return view('admin/index', $data);
 	}
+
+	public function testPost()
+	{
+		dd($this->request->getVar());
+	}
 }

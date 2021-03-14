@@ -52,15 +52,16 @@ class Lihatpegawai extends BaseController
         if (!isset($_GET['second'])) {
             $columns = ['nip' => 'p.nip', 'Nama_Pegawai' => 'nama_pegawai', 'Pangkat' => 'pangkat', 'Jabatan' => 'nama_jabatan', 'Satker' => 'nama_satker', 'Bagian' => 'nama_bagian', 'Subbag' => 'nama_subbag'];
         }
-
         foreach ($filterData as $name => $value) {
             if ($name != 'keyword' && $name != 'page' && $name != 'second') {
-                if (!str_contains($name, 'filter') && !str_contains($name, 'range')) {
+                if (!str_contains($name, 'filter') && !str_contains($name, 'range') && !str_contains($name, 'perPage')) {
                     $columns[$name] = $value;
                 } elseif (str_contains($name, 'filter')) {
-                    $name = explode("-", $name);
-                    $name = $name[1];
-                    $filterItem[$name] = $value;
+                    $nameFilter = explode("-", $name);
+                    $nameFilter = $nameFilter[1];
+                    foreach ($value as $val) {
+                        $filterItem[$val] = $nameFilter;
+                    }
                 } elseif (str_contains($name, 'range')) {
                     if (str_contains($name, 'dari'))
                         $rangeData[0] = $value;
@@ -79,6 +80,7 @@ class Lihatpegawai extends BaseController
         }
         // $perPage = isset($_GET['perPage']) ? $_GET['perPage'] : 10;
         $searchQuery = $rawDataPegawai['query'];
+
         if (isset($_GET['page'])) {
             $page = $_GET['page'];
             $start = ($perPage * $page) - $perPage;
@@ -88,8 +90,7 @@ class Lihatpegawai extends BaseController
         }
 
         $dataPegawai = $this->poldaModel->runQuery($searchQuery);
-        // dd($searchQuery);
-        // dd($dataPegawai);
+
         $data = [
             'title' => 'Data Pegawai',
             'subTitle' => 'Daftar Pegawai Negeri Sipil - POLDA Lampung',
@@ -100,7 +101,12 @@ class Lihatpegawai extends BaseController
             'keyword' => $keyword,
             'columns' => $columns,
             'dataPegawai' => $dataPegawai,
-            'query' => $rawDataPegawai['query']
+            'query' => $rawDataPegawai['query'],
+            'jabatan' => $this->jabatanModel->findAll(),
+            'pangkat_golongan' => $this->golonganModel->findAll(),
+            'satker' => $this->satkerModel->findAll(),
+            'bagian' => $this->bagianModel->findAll(),
+            'subbag' => $this->subbagModel->findAll(),
         ];
 
         return view('admin/lihat_pegawai', $data);

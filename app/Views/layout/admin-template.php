@@ -14,6 +14,7 @@
     <meta name="msapplication-tap-highlight" content="no">
 
     <link href="/assets/architectui/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/architectui/css/select2.css" />
     <link href="/assets/architectui/css/my-style.css" rel="stylesheet">
 </head>
 
@@ -33,8 +34,28 @@
 
             <div class="app-main__outer">
                 <div class="app-main__inner">
+                    <!-- content title here -->
+                    <div class="app-page-title">
+                        <div class="page-title-wrapper">
+                            <div class="page-title-heading">
+                                <div>
+                                    <?= $title ?>
+                                    <div class="page-title-subheading">
+                                        <?= $subTitle ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- content title here -->
 
+                    <!-- alert -->
+                    <?= $this->include('layout/admin-alert') ?>
+                    <!-- alert -->
+
+                    <!-- section -->
                     <?= $this->renderSection('content') ?>
+                    <!-- section -->
 
                 </div>
 
@@ -49,8 +70,20 @@
 
     </div>
 
-
     <script type="text/javascript" src="/assets/architectui/scripts/main.js"></script>
+
+    <script>
+        function previewImg() {
+            let profil = document.querySelector('#file-input');
+            let profilPreview = document.querySelector('#img-preview');
+
+            let fileProfil = new FileReader();
+            fileProfil.readAsDataURL(profil.files[0]);
+            fileProfil.onload = function(e) {
+                profilPreview.src = e.target.result;
+            }
+        }
+    </script>
 </body>
 
 </html>

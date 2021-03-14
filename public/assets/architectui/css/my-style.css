@@ -50,4 +50,42 @@ label.check input:checked + span {
   font-size: 12px;
   color: grey;
 }
+
+select {
+  border: none !important;
+}
+
+.action-icon {
+  font-size: 20px;
+}
 /* filter */
+
+
+/* detail pegawai */
+input[type="text"]:disabled,
+input[type="date"]:disabled {
+  background-color: transparent !important;
+  border: none;
+}
+
+input[type="text"]:read-only {
+  background-color: transparent;
+}
+
+.form-bio, .label-bio {
+  font-size: 13px;
+  text-transform: capitalize;
+}
+
+.image-upload > input
+{
+    display: none;
+}
+
+.image-upload img
+{
+    width: 80px;
+    cursor: pointer;
+}
+
+/* detail pegawai */

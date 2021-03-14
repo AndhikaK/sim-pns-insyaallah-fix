@@ -47,7 +47,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="" class="<?= $menuPos == 'input-pegawai' ? 'mm-active' : '' ?>">
+                    <a href="<?= base_url('/admin/tambah_pegawai') ?>" class="<?= $menuPos == 'input-pegawai' ? 'mm-active' : '' ?>">
                         <i class="metismenu-icon pe-7s-add-user <?= $menuPos == 'input-pegawai' ? 'icon-gradient bg-premium-dark' : '' ?>"></i>
                         Input Data
                     </a>
