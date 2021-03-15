@@ -49,8 +49,21 @@ $routes->group('admin', ['filter' => 'Auth'], function ($routes) {
 	// $routes->add('lihat_pegawai/(:any)', 'Admin\Lihatpegawai::index/$1');
 	$routes->add('lihat_pegawai?(:any)', 'Admin\Lihatpegawai::index/$1');
 
-
 	$routes->add('tambah_pegawai', 'Admin\Tambahpegawai::index');
+
+	$routes->add('edit_bio/(:any)', 'Admin\Editdetail::bio/$1');
+	$routes->add('edit_pdd/(:any)', 'Admin\Editdetail::tambahpdd/$1');
+	$routes->add('tambah_pdd/(:any)', 'Admin\Editdetail::tambahdatapdd/$1');
+	$routes->add('keluarga/(:any)', 'Admin\Editdetail::keluarga/$1');
+
+
+	$routes->add('edit_dikum/(:any)', 'Admin\Editdetail::bio/$1');
+	$routes->add('edit_dikbangum/(:any)', 'Admin\Editdetail::bio/$1');
+	$routes->add('edit_dikbangspes/(:any)', 'Admin\Editdetail::bio/$1');
+	$routes->add('edit_dikpol/(:any)', 'Admin\Editdetail::bio/$1');
+	$routes->add('edit_keluarga/(:any)', 'Admin\Editdetail::bio/$1');
+
+
 	$routes->add('delete_pegawai/(:any)', 'Admin\Lihatpegawai::deletePegawai/$1');
 	$routes->add('detail_pegawai/(:any)', 'Admin\Detailpegawai::index/$1');
 	$routes->add('data_master/(:any)', 'Admin\Datamaster::index/$1');
