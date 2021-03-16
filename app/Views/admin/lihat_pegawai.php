@@ -64,10 +64,16 @@
                             </div>
                         </div>
 
+                        <div class="row justify-content-center">
+                            <div class="col-auto">
+                                <button class="btn btn-primary mr-2" type="submit">Apply</button>
+                            </div>
+                        </div>
+
+                        <hr>
                     </div>
                     <!-- collapse filter -->
                 </form>
-
                 <div class="row  p-2">
                     <div class="col-12">
 
@@ -136,6 +142,10 @@
                             </div>
 
                         <?php else : ?>
+                            <div class=" mx-auto p-2 my-3 border border-primary rounded" style="width: 18rem;">
+                                <i class="pe-7s-attention text-center text-primary card-img-top" style="font-size: 120px;"></i>
+                                <p class="card-text text-center mt-2">Pencarian tidak ditemukan...</p>
+                            </div>
                         <?php endif ?>
                     </div>
 

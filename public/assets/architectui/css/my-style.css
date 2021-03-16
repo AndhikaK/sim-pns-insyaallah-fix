@@ -92,4 +92,9 @@ th, td {
   text-transform: capitalize;
 }
 
+input[type='text']:enabled.master-input {
+  border: 1px solid grey;
+  border-radius: 5px;
+  
+}
 /* detail pegawai */

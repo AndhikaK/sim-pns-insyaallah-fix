@@ -16,12 +16,11 @@
         <div class="container-login100">
             <div class="wrap-login100">
                 <form class="login100-form validate-form" action="<?= base_url('Login/signInAttempt') ?>" method="POST">
+                    <!-- <span class="login-logo">
+                        <img src="/assets/architectui/images/logo-2.png" alt="">
+                    </span> -->
                     <span class="login100-form-title p-b-26">
-                        Welcome
-                    </span>
-                    <span class="login100-form-title p-b-48">
-                        <!-- <i class=" pe-7s-ribbon"></i> -->
-                        <i class="zmdi zmdi-font"></i>
+                        LOGIN
                     </span>
 
                     <div class="wrap-input100 validate-input" data-validate="Valid email is: a@b.c">
