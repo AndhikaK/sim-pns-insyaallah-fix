@@ -312,4 +312,13 @@ class PoldaModel extends Model
 
         return $builder->getCompiledSelect();
     }
+
+    public function countPegawai()
+    {
+        $builder = $this->db->table('pegawai')
+            ->where("users.role != 'admin'")
+            ->countAllResults();
+
+        return $builder;
+    }
 }

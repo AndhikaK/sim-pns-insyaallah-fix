@@ -80,9 +80,16 @@ class Editdetail extends BaseController
     public function updateBio()
     {
         $dataPegawai = $this->request->getVar();
+        $passTTL = str_replace('-', '', $dataPegawai['ttl']);
+
+        $dataUsers = [
+            'password' => $passTTL
+
+        ];
 
         try {
             $this->pegawaiModel->update($dataPegawai['nip'], $dataPegawai);
+            $this->usersModel->update($dataPegawai['nip'], $dataUsers);
 
             session()->setFlashdata('success-edit', "Edit bio berhasil!");
         } catch (Exception $e) {
@@ -316,4 +323,158 @@ class Editdetail extends BaseController
     }
 
     // keluarga
+
+    // riwayat Pekerjaan
+    public function RwyPekerjaan($nip, $edit = null, $idItem = null)
+    {
+        $riwayatPekerjaan = $this->rwyPekerjaanModel->getOrderedData($nip);
+        $colRwyPkj = ['No SK' => 'no_sk', 'Jabatan' => 'id_jabatan', 'Satker' => 'id_satker', 'Bagian' => 'id_bagian', 'Subbag' => 'id_subbag', 'Periode Mulai' => 'periode_mulai', 'Periode Selesai' => 'periode_selesai'];
+        $colRwyPekerjaan = ['sk' => 'no_sk', 'jabatan' => 'nama_jabatan', 'satker' => 'nama_satker', 'bagian' => 'nama_bagian', 'subbag' => 'nama_subbag', 'periode mulai' => 'periode_mulai', 'periode selesai' => 'periode_selesai'];
+        $data = [
+            'title' => 'Tambah Riwayat Pekerjaan',
+            'idItem' => $idItem,
+            'edit' => $edit,
+            'nip' => $nip,
+            'jabatan' => $this->jabatanModel->findAll(),
+            'satker' => $this->satkerModel->findAll(),
+            'bagian' => $this->bagianModel->findAll(),
+            'subbag' => $this->subbagModel->findAll(),
+            'riwayatPekerjaan' => $riwayatPekerjaan,
+            'colRwyPekerjaan' => $colRwyPekerjaan
+        ];
+
+        return view('admin/edit/edit_rwy_pkj', $data);
+    }
+
+    public function tambahRwyPekerjaan()
+    {
+        $colRwyPekerjaan = $this->poldaModel->getTableCollumn('riwayat_pekerjaan');
+        $dataPekerjaan = $this->extractData($colRwyPekerjaan, $this->request->getVar());
+        $nip = $this->request->getVar('nip');
+
+        try {
+            $this->rwyPekerjaanModel->insert($dataPekerjaan);
+
+            session()->setFlashdata('success-add', "Tambah data berhasil");
+        } catch (\Exception $e) {
+            session()->setFlashdata('failed-add', $e);
+        }
+
+        return redirect()->back();
+    }
+
+    public function saveRwyPekerjaan()
+    {
+        $dataPekerjaan = $this->extractData($this->poldaModel->getTableCollumn('riwayat_pekerjaan'), $this->request->getVar());
+
+        try {
+            $this->rwyPekerjaanModel->save($dataPekerjaan);
+
+            session()->setFlashdata('success-edit', "Edit data berhasil");
+        } catch (Exception $e) {
+            session()->setFlashdata('failed-edit', $e);
+        }
+
+        return redirect()->back();
+    }
+
+    public function deleterwypekerjaan($id)
+    {
+        try {
+            $this->rwyPekerjaanModel->delete($id);
+
+            session()->setFlashdata('success-delete', 'Data riwayat pekerjaan berhasil dihapus!');
+        } catch (Exception $e) {
+            session()->setFlashdata('failed-delete', $e);
+        }
+
+        return redirect()->back();
+    }
+
+    // riwayat Pekerjaan
+
+    // riwayat golongan
+    public function RwyGolongan($nip, $edit = null, $idItem = null)
+    {
+        $riwayatGolongan = $this->rwyGolonganModel->getOrderedData($nip);
+        $colRwyGolongan = ['sk' => 'no_sk', 'golongan' => 'id_golongan', 'periode mulai' => 'periode_mulai', 'periode selesai' => 'periode_selesai'];
+
+        $data = [
+            'title' => 'Tambah Riwayat Golongan',
+            'edit' => $edit,
+            'nip' => $nip,
+            'idItem' => $idItem,
+            'riwayatGolongan' => $riwayatGolongan,
+            'colRwyGolongan' => $colRwyGolongan,
+            'golongan' => $this->golonganModel->findAll(),
+
+        ];
+
+        return view('admin/edit/edit_rwy_gol', $data);
+    }
+
+    public function tambahriwayatgol()
+    {
+        $colRwyGolongan = $this->poldaModel->getTableCollumn('riwayat_golongan');
+        $dataGolongan = $this->extractData($colRwyGolongan, $this->request->getVar());
+        $nip = $this->request->getVar('nip');
+        // dd($colRwyGolongan, $dataGolongan, $nip);
+
+        try {
+            $this->rwyGolonganModel->insert($dataGolongan);
+
+            session()->setFlashdata('success-add', "Tambah data berhasil");
+        } catch (\Exception $e) {
+            session()->setFlashdata('failed-add', $e);
+        }
+
+        return redirect()->back();
+    }
+
+    public function saveRwyGolongan()
+    {
+        $dataGolongan = $this->extractData($this->poldaModel->getTableCollumn('riwayat_golongan'), $this->request->getVar());
+
+        try {
+            $this->rwyGolonganModel->save($dataGolongan);
+
+            session()->setFlashdata('success-edit', "Edit data berhasil");
+        } catch (\Exception $e) {
+            session()->setFlashdata('failed-edit', $e);
+        }
+
+        return redirect()->to(base_url('/admin/rwy_golongan/' . $dataGolongan['nip']));
+    }
+
+    public function deleterwygolongan($id)
+    {
+        try {
+            $this->rwyGolonganModel->delete($id);
+
+            session()->setFlashdata('success-delete', 'Data riwayat pekerjaan berhasil dihapus!');
+        } catch (Exception $e) {
+            session()->setFlashdata('failed-delete', $e);
+        }
+
+        return redirect()->back();
+    }
+    // riwayat golongan
+
+    public function extractData($col, $data)
+    {
+        $container = array();
+
+        foreach ($col as $name) {
+            try {
+                if (str_contains($name, 'id_')) {
+                    $data[$name] = explode(' ', $data[$name]);
+                    $container[$name] = $data[$name][0];
+                } else {
+                    $container[$name] = $data[$name];
+                }
+            } catch (Exception $e) { }
+        }
+
+        return $container;
+    }
 }

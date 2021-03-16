@@ -126,7 +126,7 @@
                     <h4>Riwayat Pekerjaan</h4>
                 </div>
                 <div class="col-auto">
-                    <a href="" class="btn btn-primary">Edit</a>
+                    <button onclick="window.open('/admin/rwy_pekerjaan/<?= $detailPegawai['nip'] ?>/dikum', 'title', 'width=800, height=600')" class="btn btn-primary mr-3">Edit</button>
                 </div>
             </div>
             <div class="row">
@@ -159,7 +159,7 @@
                     <h4>Riwayat Golongan</h4>
                 </div>
                 <div class="col-auto">
-                    <a href="" class="btn btn-primary">Edit</a>
+                    <button onclick="window.open('/admin/rwy_golongan/<?= $detailPegawai['nip'] ?>/dikum', 'title', 'width=800, height=600')" class="btn btn-primary mr-3">Edit</button>
                 </div>
             </div>
             <div class="row">

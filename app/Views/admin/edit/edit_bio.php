@@ -72,7 +72,7 @@
 
         </div>
     </div>
-    <button class="btn btn-primary" type="submit">TAMBAH DATA</button>
+    <button class="btn btn-primary" type="submit">SIMPAN DATA</button>
 </form>
 
 <?= $this->endSection() ?>

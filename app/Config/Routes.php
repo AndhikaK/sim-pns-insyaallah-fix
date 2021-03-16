@@ -55,7 +55,8 @@ $routes->group('admin', ['filter' => 'Auth'], function ($routes) {
 	$routes->add('edit_pdd/(:any)', 'Admin\Editdetail::tambahpdd/$1');
 	$routes->add('tambah_pdd/(:any)', 'Admin\Editdetail::tambahdatapdd/$1');
 	$routes->add('keluarga/(:any)', 'Admin\Editdetail::keluarga/$1');
-
+	$routes->add('rwy_pekerjaan/(:any)', 'Admin\Editdetail::RwyPekerjaan/$1');
+	$routes->add('rwy_golongan/(:any)', 'Admin\Editdetail::RwyGolongan/$1');
 
 	$routes->add('edit_dikum/(:any)', 'Admin\Editdetail::bio/$1');
 	$routes->add('edit_dikbangum/(:any)', 'Admin\Editdetail::bio/$1');

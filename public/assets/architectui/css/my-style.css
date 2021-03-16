@@ -98,3 +98,18 @@ input[type='text']:enabled.master-input {
   
 }
 /* detail pegawai */
+
+
+/* color gradient */
+.neon-blue-gradient {
+  background-image: linear-gradient(to right, #396afc , #2948ff);
+}
+
+.sky-gradient {
+  background-image: linear-gradient(to right, #E0EAFC , #CFDEF3);
+}
+
+.flikr-gradent {
+  background-image: linear-gradient(to right, #b3002d , #ff0084);
+}
+/* color gradient  */

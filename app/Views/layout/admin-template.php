@@ -13,6 +13,7 @@
     <meta name="description" content="This is an example dashboard created using build-in elements and components.">
     <meta name="msapplication-tap-highlight" content="no">
 
+    <link rel="icon" href="/profil/sdm-polri.png" type="image/icon type">
     <link href="/assets/architectui/main.css" rel="stylesheet">
     <link href="/assets/architectui/css/my-style.css" rel="stylesheet">
     <link rel="stylesheet" href="/assets/architectui/css/select2.css" />
