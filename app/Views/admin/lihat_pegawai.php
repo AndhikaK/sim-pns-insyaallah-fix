@@ -47,19 +47,19 @@
                         <h4 class="card-title">Filter Kategori</h4>
                         <hr class="">
                         <div class="row px-3">
-                            <div class="col-4 px-0">
+                            <div class="col-4 p-2">
                                 <select name="filter-nama_jabatan-[]" id="nama_jabatan" class="form-control select2 px-0 mx-0" multiple="multiple" style="width: 100%;"></select>
                             </div>
-                            <div class="col-4 px-0">
+                            <div class="col-4 p-2">
                                 <select name="filter-r_gol@id_golongan-[]" id="id_golongan" class="form-control select2 px-0 mx-0" multiple="multiple" style="width: 100%;"></select>
                             </div>
-                            <div class="col-4 px-0">
+                            <div class="col-4 p-2">
                                 <select name="filter-nama_satker-[]" id="nama_satker" class="form-control select2 px-0 mx-0" multiple="multiple" style="width: 100%;"></select>
                             </div>
-                            <div class="col-4 px-0">
+                            <div class="col-4 p-2">
                                 <select name="filter-nama_bagian-[]" id="nama_bagian" class="form-control select2" multiple="multiple" style="width: 100%;"></select>
                             </div>
-                            <div class="col-4 px-0">
+                            <div class="col-4 p-2">
                                 <select name="filter-nama_subbag-[]" id="nama_subbag" class="form-control select2" multiple="multiple" style="width: 100%;"></select>
                             </div>
                         </div>
@@ -75,14 +75,27 @@
                             <div class="table-responsive">
                                 <h4><?= $keyword ? "Menampilkan hasil pencarian '$keyword'" : "" ?></h4>
 
-                                <input type="text" list="pageListOption" class="input-perpage" id="perPage" name="perPage" onchange="setPerPage()" value="<?= $perPage ?>" autocomplete="off"> data
-                                <datalist id="pageListOption">
-                                    <option value="10"></option>
-                                    <option value="20"></option>
-                                    <option value="50"></option>
-                                    <option value="100"></option>
-                                    <option value="semua"></option>
-                                </datalist>
+                                <div class="row mb-2">
+                                    <div class="col">
+                                        <input type="text" list="pageListOption" class="input-perpage" id="perPage" name="perPage" onchange="setPerPage()" value="<?= $perPage ?>" autocomplete="off"> data
+                                        <datalist id="pageListOption">
+                                            <option value="10"></option>
+                                            <option value="20"></option>
+                                            <option value="50"></option>
+                                            <option value="100"></option>
+                                            <option value="semua"></option>
+                                        </datalist>
+                                    </div>
+                                    <div class="col-auto">
+                                        <form action="<?= base_url('/Admin/lihatpegawai/exportQuery/') ?>" method="POST" class="inline">
+                                            <a href="<?= base_url('/admin/lihatpegawai/import') ?>" class="btn btn-warning">Import</a>
+                                            <input type="text" name="searchQuery" value="<?= $query ?>" hidden>
+                                            <!-- <a href="" class="btn btn-primary">Export</a> -->
+                                            <button class="btn btn-primary">Export</button>
+                                        </form>
+                                    </div>
+                                </div>
+
 
                                 <table class="table table-bordered ">
                                     <thead>

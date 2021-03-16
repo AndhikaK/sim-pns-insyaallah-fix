@@ -53,6 +53,12 @@
                     </a>
                 </li>
                 <li>
+                    <a href="<?= base_url('/admin/data_master/jabatan') ?>" class="<?= $menuPos == 'data-master' ? 'mm-active' : '' ?>">
+                        <i class="metismenu-icon pe-7s-add-user <?= $menuPos == 'data-master' ? 'icon-gradient bg-premium-dark' : '' ?>"></i>
+                        Data Master
+                    </a>
+                </li>
+                <li>
                     <a href="<?= base_url('/login/signOut') ?>">
                         <i class="metismenu-icon pe-7s-right-arrow"></i>
                         Log out

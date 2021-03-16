@@ -12,7 +12,7 @@ class Home extends BaseController
 			'menuPos' => 'beranda',
 		];
 
-		return view('admin/index', $data);
+		return redirect()->to('/login');
 	}
 
 	public function testPost()

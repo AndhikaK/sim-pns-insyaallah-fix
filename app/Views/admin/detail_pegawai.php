@@ -10,7 +10,8 @@
             <!-- Biodata -->
             <div class="row justify-content-end">
                 <a href=""><button class="btn btn-warning mr-2"><i class="pe-7s-print"></i> Print</button></a>
-                <a href=""><button class="btn btn-primary mr-3">Edit Biodata</button></a>
+                <button onclick="window.open('/admin/edit_bio/<?= $detailPegawai['nip'] ?>', 'title', 'width=800, height=600')" class="btn btn-primary mr-3">Edit Bio</button>
+
             </div>
             <hr>
             <div class="row">
@@ -191,11 +192,13 @@
                     <h4>Pendidikan</h4>
                 </div>
                 <div class="col-auto">
-                    <a href="" class="btn btn-primary">Edit</a>
+                    <button onclick="window.open('/admin/edit_pdd/<?= $detailPegawai['nip'] ?>/dikum', 'title', 'width=800, height=600')" class="btn btn-primary mr-3">Edit</button>
+                    <!-- <a onclick="window.open('/admin/detailpegawai/tambahpdd/<?= $detailPegawai['nip'] ?>/dikum', 'title', 'width=800, height=600')" class="uk-icon-link uk-margin-small-left text-white" uk-icon="file-edit"></a> -->
+
                 </div>
             </div>
-            <div class="row">
-                <div class="col-6 pr-0">
+            <div class="row px-3">
+                <div class="col-6 px-0 border border-light">
                     <div class="bg-primary p-2 text-white">Pendidikan Umum</div>
                     <table class="table table-bordered">
                         <thead>
@@ -214,7 +217,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="col-6 pl-0">
+                <div class="col-6 px-0 border border-light">
                     <div class="bg-primary p-2 text-white">Pendidikan Pengembangan Umum</div>
                     <table class="table table-bordered">
                         <thead>
@@ -233,7 +236,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="col-6 pr-0">
+                <div class="col-6 px-0 border border-light">
                     <div class="bg-primary p-2 text-white">Pendidikan Pengembangan Spesialis</div>
                     <table class="table table-bordered">
                         <thead>
@@ -252,7 +255,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="col-6 pl-0">
+                <div class="col-6 px-0 border border-light">
                     <div class="bg-primary p-2 text-white">Pendidikan Kepolisian</div>
                     <table class="table table-bordered">
                         <thead>
@@ -273,9 +276,45 @@
                 </div>
             </div>
             <!-- Pendidikan -->
+            <hr>
+            <!-- keluarga -->
+            <div class="row">
+                <div class="col text-center">
+                    <h4>Data Keluarga</h4>
+                </div>
+                <div class="col-auto">
+                    <!-- <a href="" class="btn btn-primary">Edit</a> -->
+                    <button onclick="window.open('/admin/keluarga/<?= $detailPegawai['nip'] ?>', 'title', 'width=800, height=600')" class="btn btn-primary mr-3">Edit</button>
 
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr class="table-active">
+                                <?php foreach ($colKeluarga as $colName => $colValue) : ?>
+                                    <th><?= $colName ?></th>
+                                <?php endforeach ?>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($dataKeluarga as $item) : ?>
+                                <tr>
+                                    <?php foreach ($colKeluarga as $colName => $colValue) : ?>
+                                        <td><?= $item[$colValue] ?></td>
+                                    <?php endforeach ?>
+                                </tr>
+                            <?php endforeach ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
+        <!-- keluarga -->
+
     </div>
+</div>
 </div>
 <!-- main content  -->
 

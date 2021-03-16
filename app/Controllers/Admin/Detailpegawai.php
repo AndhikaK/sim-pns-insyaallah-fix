@@ -59,6 +59,7 @@ class Detailpegawai extends BaseController
         $this->rwyDikbangumModel = new RwyDikbangumModel();
         $this->rwyDikbangspesModel = new RwyDikbangspesModel();
     }
+
     public function index($nip, $edit = null)
     {
         $detailPegawai = $this->pegawaiModel->find($nip);

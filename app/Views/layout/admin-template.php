@@ -14,8 +14,8 @@
     <meta name="msapplication-tap-highlight" content="no">
 
     <link href="/assets/architectui/main.css" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/architectui/css/select2.css" />
     <link href="/assets/architectui/css/my-style.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/architectui/css/select2.css" />
 </head>
 
 <body>
