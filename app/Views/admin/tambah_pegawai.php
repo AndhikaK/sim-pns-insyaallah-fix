@@ -97,7 +97,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="exampleDataList" class="form-label">Bagian</label>
+                    <label for="exampleDataList" class="form-label">Subbag</label>
                     <input class="form-control" list="listSubbagOption" id="id_subbag" name="id_subbag" placeholder="Masukkan Subbag..." required autocomplete="off">
                     <datalist id="listSubbagOption">
                         <?php foreach ($subbag as $row) : ?>

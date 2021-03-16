@@ -9064,9 +9064,12 @@ button,
   transition: width 0.2s;
 }
 .app-header__logo .logo-src {
-  height: 23px;
-  width: 97px;
-  background: url(images/logo-inverse.png);
+  height: 40px;
+  width: 120px;
+  background: url(images/logo-2.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* background: url(images/SIM-PNS-logo.png); */
 }
 .app-header__menu,
 .app-header__mobile-menu {
@@ -9351,6 +9354,7 @@ button,
 }
 .app-header.header-text-dark .app-header__logo .logo-src {
   background: url(images/logo-inverse.png);
+  /* background: url(images/SIM-PNS-logo.png); */
 }
 .app-sidebar {
   width: 280px;
