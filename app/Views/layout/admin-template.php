@@ -75,14 +75,17 @@
 
     <script>
         function previewImg() {
-            let profil = document.querySelector('#file-input');
+            let profil = document.querySelector('.file-input-coba');
             let profilPreview = document.querySelector('#img-preview');
+            let btnUploadProfil = document.querySelector('#upload-profil');
 
             let fileProfil = new FileReader();
             fileProfil.readAsDataURL(profil.files[0]);
             fileProfil.onload = function(e) {
                 profilPreview.src = e.target.result;
             }
+
+            btnUploadProfil.style.display = 'block'
         }
     </script>
 </body>

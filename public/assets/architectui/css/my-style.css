@@ -60,7 +60,6 @@ select {
 }
 /* filter */
 
-
 /* detail pegawai */
 input[type="text"]:disabled,
 input[type="date"]:disabled {
@@ -72,44 +71,86 @@ input[type="text"]:read-only {
   background-color: transparent;
 }
 
-.form-bio, .label-bio {
+.form-bio,
+.label-bio {
   font-size: 13px;
   text-transform: capitalize;
 }
 
-.image-upload > input
-{
-    display: none;
+.image-upload > input {
+  display: none;
 }
 
-.image-upload img
-{
-    width: 80px;
-    cursor: pointer;
+.image-upload img {
+  width: 80px;
+  cursor: pointer;
 }
 
-th, td {
+th,
+td {
   text-transform: capitalize;
 }
 
-input[type='text']:enabled.master-input {
+input[type="text"]:enabled.master-input {
   border: 1px solid grey;
   border-radius: 5px;
-  
 }
 /* detail pegawai */
 
-
 /* color gradient */
 .neon-blue-gradient {
-  background-image: linear-gradient(to right, #396afc , #2948ff);
+  background-image: linear-gradient(to right, #396afc, #2948ff);
 }
 
 .sky-gradient {
-  background-image: linear-gradient(to right, #E0EAFC , #CFDEF3);
+  background-image: linear-gradient(to right, #e0eafc, #cfdef3);
 }
 
 .flikr-gradent {
-  background-image: linear-gradient(to right, #b3002d , #ff0084);
+  background-image: linear-gradient(to right, #b3002d, #ff0084);
 }
 /* color gradient  */
+
+/* style uploda detail profil */
+.file {
+  opacity: 0;
+  width: 0.1px;
+  height: 0.1px;
+  position: absolute;
+}
+.file-input label {
+  display: block;
+  position: relative;
+  padding: 5px;
+  border-radius: 5px;
+  margin-right: 10px;
+  margin-left: 10px;
+  margin-top: 15px;
+  /* background: linear-gradient(40deg, #ff6ec4, #7873f5); */
+  background-color: transparent;
+  /* box-shadow: 0 4px 7px rgba(0, 0, 0, 0.4); */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: blue;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease-out;
+}
+
+input:hover + label,
+input:focus + label {
+  transform: scale(1.02);
+  background-color: blue;
+  color: white;
+}
+
+.up-btn {
+  border: none;
+  border-radius: 5px;
+}
+
+#upload-profil {
+  display: none;
+}
+/* style uploda detail profil */

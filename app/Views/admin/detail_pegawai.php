@@ -15,21 +15,30 @@
             </div>
             <hr>
             <div class="row">
+
+                <div class="col-12 mb-3 text-center">
+                    <h4>Data Pegawai</h4>
+                </div>
+
                 <div class="col-2">
                     <form action="<?= base_url('admin/detailpegawai/saveProfil/' . $detailPegawai['nip']) ?>" method="POST" enctype="multipart/form-data">
-                        <div class="row">
-                            <div class="image-upload">
-                                <label for="file-input" class="col-12">
-                                    <img src="/profil/<?= $detailPegawai['profil'] ? $detailPegawai['profil'] : 'sdm-polri.png' ?>" class="col-12 img-preview" id="img-preview" width="400">
-                                </label>
-                                <input type="file" class="form-control <?= $validation->hasError('profil') ? 'is-invalid' : "" ?>" name="profil" id="file-input" onchange="previewImg()">
 
-                                <!-- <input id="file-input" type="file" /> -->
-                                <div class="invalid-feedback">
-                                    <?= $validation->getError('profil') ?>
-                                </div>
+                        <div class="row justify-content-center">
+                            <!-- <div class="col-12"> -->
+                            <!-- </div> -->
+                            <div class="file-input">
+                                <img src="/profil/<?= $detailPegawai['profil'] ? $detailPegawai['profil'] : 'sdm-polri.png' ?>" class="col-12 p-1 px-2 img-preview" alt="" id="img-preview">
+                                <input type="file" id="file" class="file file-input-coba" <?= $validation->hasError('profil') ? 'is-invalid' : "" ?>" name="profil" onchange="previewImg()">
+                                <label for="file">Select file</label>
+                            </div>
 
-                                <button>Ganti Profil</button>
+                            <!-- <input id="file-input" type="file" /> -->
+                            <div class="invalid-feedback">
+                                <?= $validation->getError('profil') ?>
+                            </div>
+
+                            <div class="col-auto">
+                                <button id="upload-profil" class="btn btn-primary">Update Foto</button>
                             </div>
                         </div>
                     </form>

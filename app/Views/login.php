@@ -23,9 +23,9 @@
                         LOGIN
                     </span>
 
-                    <div class="wrap-input100 validate-input" data-validate="Valid email is: a@b.c">
+                    <div class="wrap-input100 validate-input">
                         <input class="input100" type="text" name="nip">
-                        <span class="focus-input100" data-placeholder="Email"></span>
+                        <span class="focus-input100" data-placeholder="NIP"></span>
                     </div>
 
                     <div class="wrap-input100 validate-input" data-validate="Enter password">
