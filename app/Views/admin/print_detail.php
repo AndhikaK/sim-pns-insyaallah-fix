@@ -14,6 +14,18 @@
 
 <body>
     <h3 class="text-center">Detail Pegawai</h3>
+
+    <div class="container-bio">
+        <div class="coll-1">
+            <img src="/profil/sdm-polri.png" alt="">
+        </div>
+        <div class="coll-2">
+
+        </div>
+        <div class="coll-3">
+
+        </div>
+    </div>
 </body>
 
 </html>
