@@ -67,6 +67,31 @@ class Beranda extends BaseController
         $totalSatker = $this->satkerModel->countAllResults();
         $totalBagian = $this->bagianModel->countAllResults();
         $totalSubbag = $this->subbagModel->countAllResults();
+        $satker = $this->satkerModel->where("nama_satker != ''")->findAll();
+        $pegawaiSatkerOnly = $this->poldaModel->getPegawaiSatkerOnly();
+
+        $labels = array();
+
+        foreach ($pegawaiSatkerOnly as $item) {
+            foreach ($satker as $sat) {
+                if ($item['nama_satker'] == $sat['nama_satker']) {
+                    if (!isset($labels[$sat['nama_satker']])) {
+                        $labels[$sat['nama_satker']] = '-';
+                    } else {
+                        $labels[$sat['nama_satker']] .= '-';
+                    }
+                } else {
+                    if (!isset($labels[$sat['nama_satker']])) {
+                        $labels[$sat['nama_satker']] = '';
+                    }
+                }
+            }
+        }
+
+        foreach ($labels as $name => $val) {
+            $labels[$name] = strlen($val);
+        }
+
 
         $data = [
             'title' => 'Beranda',
@@ -76,6 +101,7 @@ class Beranda extends BaseController
             'totalSatker' => $totalSatker,
             'totalBagian' => $totalBagian,
             'totalSubbag' => $totalSubbag,
+            'labels' => $labels
         ];
 
         return view('admin/index', $data);

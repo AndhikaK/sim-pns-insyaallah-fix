@@ -63,10 +63,37 @@
 <div class="row">
     <div class="col-6">
         <div class="card p-2">
+            <canvas id="myChart" width="400" height="400"></canvas>
         </div>
     </div>
 </div>
 <!-- main content  -->
 
+<script type="text/javascript" src="/assets/architectui/scripts/main.js"></script>
+
+<script>
+    var ctx = document.getElementById('myChart');
+
+    let labels = <?= json_encode(array_keys($labels)) ?>;
+    let dataSets = <?= json_encode(array_values($labels)) ?>;
+    let backColor = []
+    for (i = 0; i < labels.length; i++) {
+        backColor.push('#' + Math.floor(Math.random() * 16777215).toString(16))
+    }
+
+    console.log(backColor)
+    var myChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: '# of Votes',
+                data: dataSets,
+                backgroundColor: backColor,
+            }]
+        },
+        options: {}
+    });
+</script>
 
 <?= $this->endSection() ?>

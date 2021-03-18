@@ -321,4 +321,42 @@ class PoldaModel extends Model
 
         return $builder;
     }
+
+    public function getPegawaiSatkerOnly()
+    {
+        $builder = $this->db->table('pegawai p');
+        $builder->select('nama_satker');
+        $builder->join("(
+                    SELECT t3.*
+                    FROM riwayat_golongan t3
+                    WHERE t3.periode_mulai = (
+                        SELECT periode_mulai from riwayat_golongan
+                        WHERE nip = t3.nip
+                        ORDER by periode_mulai DESC
+                        LIMIT 1
+                        )
+                    ) as r_gol 
+                ", "r_gol.nip = p.nip", "LEFT OUTER")
+            ->join("(
+                    SELECT t1.* 
+                    FROM riwayat_pekerjaan t1
+                    WHERE t1.periode_mulai = (
+                        SELECT periode_mulai FROM riwayat_pekerjaan
+                        WHERE nip = t1.nip
+                        ORDER BY periode_mulai DESC
+                        LIMIT 1
+                        )
+                    ) as r_pkj 
+                ", "r_pkj.nip = p.nip", "LEFT OUTER")
+            ->join("satker sat", "sat.id_satker = r_pkj.id_satker", "LEFT OUTER")
+            ->join("bagian bag", "bag.id_bagian = r_pkj.id_bagian", "LEFT OUTER")
+            ->join("subbag sub", "sub.id_subbag = r_pkj.id_subbag", "LEFT OUTER")
+            ->join("jabatan jbt", "jbt.id_jabatan = r_pkj.id_jabatan", "LEFT OUTER")
+            ->join("golongan gol", "gol.id_golongan = r_gol.id_golongan", "LEFT OUTER")
+            ->join("users", "users.nip = p.nip", "LEFT OUTER")
+            ->where("users.role != 'admin'")
+            ->where("nama_satker != ''");
+
+        return $builder->get()->getResultArray();
+    }
 }
