@@ -62,6 +62,7 @@
                     <label for="exampleDataList" class="form-label">Jabatan</label>
                     <input class="form-control" list="listJabatanOption" id="jabatan" name="jabatan" placeholder="Masukkan Jabatan..." required autocomplete="off">
                     <datalist id="listJabatanOption">
+                        <option value=""></option>
                         <?php foreach ($jabatan as $row) : ?>
 
                             <option value="<?= $row['id_jabatan'] . " - " . $row['nama_jabatan'] ?>"> </option>
@@ -76,6 +77,7 @@
                     <label for="exampleDataList" class="form-label">Satuan Kerja</label>
                     <input class="form-control" list="listSatkerOption" id="id_satker" name="id_satker" placeholder="Masukkan Satuan Kerja..." required autocomplete="off">
                     <datalist id="listSatkerOption">
+                        <option value=""></option>
                         <?php foreach ($satker as $row) : ?>
 
                             <option value="<?= $row['id_satker'] . " - " . $row['nama_satker'] ?>"> </option>
@@ -88,6 +90,7 @@
                     <label for="exampleDataList" class="form-label">Bagian</label>
                     <input class="form-control" list="listBagianOption" id="id_bagian" name="id_bagian" placeholder="Masukkan Bagian..." required autocomplete="off">
                     <datalist id="listBagianOption">
+                        <option value=""></option>
                         <?php foreach ($bagian as $row) : ?>
 
                             <option value="<?= $row['id_bagian'] . " - " . $row['nama_bagian'] ?>"> </option>
@@ -138,5 +141,49 @@
     </form>
 </div>
 
+
+<script>
+    let satker = document.querySelector('#id_satker');
+    let bagian = document.querySelector('#id_bagian');
+    let subbag = document.querySelector('#id_subbag');
+
+    let listBagian = document.querySelector('#listBagianOption')
+    let listSubbag = document.querySelector('#listSubbagOption')
+
+    let rawBagian = <?= json_encode($bagian) ?>;
+    let rawSubbag = <?= json_encode($subbag) ?>;
+
+    satker.addEventListener('change', function() {
+
+        let satkerValue = satker.value.split(" ")[0]
+
+        let options = ''
+
+        rawBagian.forEach(element => {
+            if (element['id_bagian'].substr(0, satkerValue.length) == satkerValue) {
+                options += '<option value="' + element['id_bagian'] + ' - ' + element['nama_bagian'] + '" />';
+            }
+        })
+
+        console.log(options)
+        listBagian.innerHTML = options
+    })
+
+    bagian.addEventListener('change', function() {
+
+        let bagianValue = bagian.value.split(" ")[0]
+
+        let optionSubbag = ''
+
+        rawSubbag.forEach(element => {
+            // console.log(element['id_subbag'].substr(0, bagianValue.length), bagianValue)
+            if (element['id_subbag'].substr(0, bagianValue.length) == bagianValue) {
+                optionSubbag += '<option value="' + element['id_subbag'] + ' - ' + element['nama_subbag'] + '" />';
+            }
+        })
+
+        listSubbag.innerHTML = optionSubbag
+    })
+</script>
 
 <?= $this->endSection() ?>

@@ -24,18 +24,10 @@
                     <div class="widget-content-wrapper">
                         <div class="widget-content-left">
                             <div class="btn-group">
-                                <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="p-0 btn">
+                                <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="p-0 btn mr-3">
                                     <img width="42" class="rounded-circle" src="/profil/sdm-polri.png" alt="">
-                                    <i class="fa fa-angle-down ml-2 opacity-8"></i>
                                 </a>
-                                <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
-                                    <button type="button" tabindex="0" class="dropdown-item">User Account</button>
-                                    <button type="button" tabindex="0" class="dropdown-item">Settings</button>
-                                    <h6 tabindex="-1" class="dropdown-header">Header</h6>
-                                    <button type="button" tabindex="0" class="dropdown-item">Actions</button>
-                                    <div tabindex="-1" class="dropdown-divider"></div>
-                                    <button type="button" tabindex="0" class="dropdown-item">Dividers</button>
-                                </div>
+
                             </div>
                         </div>
                         <div class="widget-content-left  ml-3 header-user-info">
@@ -46,7 +38,7 @@
                                 <?= ucwords(strtolower($riwayatPekerjaan[0]['nama_jabatan'])) ?>
                             </div>
                         </div>
-                        <a href="<?= base_url('/login/signOut') ?>" class="btn">LOGOUT</a>
+                        <a href="<?= base_url('/login/signOut') ?>" class="btn border btn-logout">LOGOUT</a>
                     </div>
                 </div>
             </div>

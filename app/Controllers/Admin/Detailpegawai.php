@@ -104,6 +104,97 @@ class Detailpegawai extends BaseController
         return view('admin/detail_pegawai', $data);
     }
 
+    function htmlToPDF($nip)
+    {
+        $detailPegawai = $this->pegawaiModel->find($nip);
+        $dataKeluarga = $this->keluargaModel->where('nip', $nip)->findAll();
+        $riwayatPekerjaan = $this->rwyPekerjaanModel->getOrderedData($nip);
+        $riwayatGolongan = $this->rwyGolonganModel->getOrderedData($nip);
+        $riwayatDikum = $this->rwyDikumModel->where('nip', $nip)->orderBy('tahun_lulus', 'DESC')->findAll();
+        $riwayatDikpol = $this->rwyDikpolModel->where('nip', $nip)->orderBy('tahun_lulus', 'DESC')->findAll();
+        $riwayatDikbangum = $this->rwyDikbangumModel->where('nip', $nip)->orderBy('tahun_lulus', 'DESC')->findAll();
+        $riwayatDikbangspes = $this->rwyDikbangspesModel->where('nip', $nip)->orderBy('tahun_lulus', 'DESC')->findAll();
+
+        // Kolom buat display di rwy (Rubah ini pokoknya)
+        $colKeluarga = ['NIK' => 'nik_keluarga', 'STATUS' => 'status_keluarga', 'NAMA' => 'nama_keluarga', 'TANGGAL LAHIR' => 'tanggal_lahir_keluarga', 'JENIS KELAMIN' => 'jenis_kelamin_keluarga'];
+        $colRwyPekerjaan = ['sk' => 'no_sk', 'jabatan' => 'nama_jabatan', 'satker' => 'nama_satker', 'bagian' => 'nama_bagian', 'subbag' => 'nama_subbag', 'periode mulai' => 'periode_mulai', 'periode selesai' => 'periode_selesai'];
+        $colRwyGolongan = ['sk' => 'no_sk', 'golongan' => 'id_golongan', 'periode mulai' => 'periode_mulai', 'periode selesai' => 'periode_selesai'];
+
+
+        $data = [
+            'title' => 'Detail Pegawai',
+            'subTitle' => '',
+            'menuPos' => 'lihat-pegawai',
+            'edit' => null,
+            'detailPegawai' => $detailPegawai,
+            'riwayatPekerjaan' => $riwayatPekerjaan,
+            'riwayatGolongan' => $riwayatGolongan,
+            'jabatan' => $this->jabatanModel->findAll(),
+            'golongan' => $this->golonganModel->findAll(),
+            'satker' => $this->satkerModel->findAll(),
+            'bagian' => $this->bagianModel->findAll(),
+            'subbag' => $this->subbagModel->findAll(),
+            'dataKeluarga' => $dataKeluarga,
+            'riwayatDikum' => $riwayatDikum,
+            'riwayatDikpol' => $riwayatDikpol,
+            'riwayatDikbangum' => $riwayatDikbangum,
+            'riwayatDikbangspes' => $riwayatDikbangspes,
+            'colRwyPekerjaan' => $colRwyPekerjaan,
+            'colRwyGolongan' => $colRwyGolongan,
+            'colKeluarga' => $colKeluarga,
+            'validation' => \Config\Services::validation()
+        ];
+
+        $dompdf = new \Dompdf\Dompdf();
+        $dompdf->loadHtml(view('admin/print_detail', $data));
+        $dompdf->setPaper('A4', 'landscape');
+        $dompdf->render();
+        $dompdf->stream();
+    }
+
+    public function checkPrint($nip)
+    {
+        $detailPegawai = $this->pegawaiModel->find($nip);
+        $dataKeluarga = $this->keluargaModel->where('nip', $nip)->findAll();
+        $riwayatPekerjaan = $this->rwyPekerjaanModel->getOrderedData($nip);
+        $riwayatGolongan = $this->rwyGolonganModel->getOrderedData($nip);
+        $riwayatDikum = $this->rwyDikumModel->where('nip', $nip)->orderBy('tahun_lulus', 'DESC')->findAll();
+        $riwayatDikpol = $this->rwyDikpolModel->where('nip', $nip)->orderBy('tahun_lulus', 'DESC')->findAll();
+        $riwayatDikbangum = $this->rwyDikbangumModel->where('nip', $nip)->orderBy('tahun_lulus', 'DESC')->findAll();
+        $riwayatDikbangspes = $this->rwyDikbangspesModel->where('nip', $nip)->orderBy('tahun_lulus', 'DESC')->findAll();
+
+        // Kolom buat display di rwy (Rubah ini pokoknya)
+        $colKeluarga = ['NIK' => 'nik_keluarga', 'STATUS' => 'status_keluarga', 'NAMA' => 'nama_keluarga', 'TANGGAL LAHIR' => 'tanggal_lahir_keluarga', 'JENIS KELAMIN' => 'jenis_kelamin_keluarga'];
+        $colRwyPekerjaan = ['sk' => 'no_sk', 'jabatan' => 'nama_jabatan', 'satker' => 'nama_satker', 'bagian' => 'nama_bagian', 'subbag' => 'nama_subbag', 'periode mulai' => 'periode_mulai', 'periode selesai' => 'periode_selesai'];
+        $colRwyGolongan = ['sk' => 'no_sk', 'golongan' => 'id_golongan', 'periode mulai' => 'periode_mulai', 'periode selesai' => 'periode_selesai'];
+
+
+        $data = [
+            'title' => 'Detail Pegawai',
+            'subTitle' => '',
+            'menuPos' => 'lihat-pegawai',
+            'edit' => null,
+            'detailPegawai' => $detailPegawai,
+            'riwayatPekerjaan' => $riwayatPekerjaan,
+            'riwayatGolongan' => $riwayatGolongan,
+            'jabatan' => $this->jabatanModel->findAll(),
+            'golongan' => $this->golonganModel->findAll(),
+            'satker' => $this->satkerModel->findAll(),
+            'bagian' => $this->bagianModel->findAll(),
+            'subbag' => $this->subbagModel->findAll(),
+            'dataKeluarga' => $dataKeluarga,
+            'riwayatDikum' => $riwayatDikum,
+            'riwayatDikpol' => $riwayatDikpol,
+            'riwayatDikbangum' => $riwayatDikbangum,
+            'riwayatDikbangspes' => $riwayatDikbangspes,
+            'colRwyPekerjaan' => $colRwyPekerjaan,
+            'colRwyGolongan' => $colRwyGolongan,
+            'colKeluarga' => $colKeluarga,
+            'validation' => \Config\Services::validation()
+        ];
+
+        return view('admin/print_detail', $data);
+    }
 
     public function saveProfil($nip)
     {

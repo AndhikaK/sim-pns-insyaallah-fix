@@ -127,7 +127,7 @@
                                                     </div>
                                                 </td>
                                                 <?php foreach ($columns as $key => $col) : ?>
-                                                    <td id="<?= $col . $i - 1 ?>"><?= strtoupper($pegawai[$col == 'p.nip' ? 'nip' : $col]) ?></td>
+                                                    <td id="<?= $col . $i - 1 ?>"><?= $pegawai[$col == 'p.nip' ? 'nip' : $col] != 'null' ? strtoupper($pegawai[$col == 'p.nip' ? 'nip' : $col]) : "" ?></td>
                                                 <?php endforeach; ?>
                                             </tr>
                                         <?php endforeach; ?>

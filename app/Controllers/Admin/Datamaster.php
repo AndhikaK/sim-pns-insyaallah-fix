@@ -66,9 +66,16 @@ class Datamaster extends BaseController
     public function saveMasterData($table)
     {
         // dd($this->request->getVar());
+        if ($table == 'bagian' || $table == 'subbag') {
+            $dataInsert['id_' . $table] = $this->request->getVar('idHolder') . $this->request->getVar('id_' . $table);
+            $dataInsert['nama_' . $table] = $this->request->getVar('nama_' . $table);
+        } else {
+            $dataInsert = $this->request->getVar();
+        }
 
         try {
-            $this->poldaModel->insertDataArray($table, $this->request->getVar());
+
+            $this->poldaModel->insertDataArray($table, $dataInsert);
 
             session()->setFlashdata('success-add', "Data berhasil ditambahkan!");
         } catch (\Exception $e) {

@@ -226,7 +226,21 @@ class Lihatpegawai extends BaseController
                         'role' => 'user',
                         'status' => 1
                     ];
+                    $pekerjaan = [
+                        'nip' => $item['nip'],
+                        'id_jabatan' => '99',
+                        'id_satker' => '99',
+                        'id_bagian' => '9999',
+                        'id_subbag' => '9999999'
+                    ];
+                    $golongan = [
+                        'nip' => $item['nip'],
+                        'id_golongan' => 99
+                    ];
+
                     $this->pegawaiModel->insert($item);
+                    $this->rwyPekerjaanModel->insert($pekerjaan);
+                    $this->rwyGolonganModel->insert($golongan);
                     $this->usersModel->insert($users);
                 }
 

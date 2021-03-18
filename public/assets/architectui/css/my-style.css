@@ -138,12 +138,12 @@ input[type="text"]:enabled.master-input {
   transition: transform 0.2s ease-out;
 }
 
-input:hover + label,
+/* input:hover + label,
 input:focus + label {
   transform: scale(1.02);
   background-color: blue;
   color: white;
-}
+} */
 
 .up-btn {
   border: none;
@@ -152,5 +152,10 @@ input:focus + label {
 
 #upload-profil {
   display: none;
+}
+
+.btn-logout:hover {
+  background-color: blue;
+  color: white;
 }
 /* style uploda detail profil */

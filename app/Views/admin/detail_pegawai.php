@@ -9,7 +9,7 @@
         <div class="card p-3 mx-1">
             <!-- Biodata -->
             <div class="row justify-content-end">
-                <a href=""><button class="btn btn-warning mr-2"><i class="pe-7s-print"></i> Print</button></a>
+                <a href="<?= base_url('/admin/detailpegawai/htmlToPDF/' . $detailPegawai['nip']) ?>"><button class="btn btn-warning mr-2"><i class="pe-7s-print"></i> Print</button></a>
                 <button onclick="window.open('/admin/edit_bio/<?= $detailPegawai['nip'] ?>', 'title', 'width=800, height=600')" class="btn btn-primary mr-3">Edit Bio</button>
 
             </div>
@@ -104,7 +104,7 @@
                     <div class="form-group row">
                         <label for="id_jabatan" class="col col-form-label-sm form-label-small label-bio">Jabatan</label>
                         <div class="col-8">
-                            <input type="text" list="jabatanListOption" class="form-control form-bio" id="id_jabatan" name="id_jabatan" value="<?= ($edit == 'edit-bio' ? $riwayatPekerjaan[0]['id_jabatan'] . " - " : "") . $riwayatPekerjaan[0]['nama_jabatan'] ?>" disabled autocomplete="off">
+                            <input type="text" list="jabatanListOption" class="form-control form-bio null" id="id_jabatan" name="id_jabatan" value="<?= ($edit == 'edit-bio' ? $riwayatPekerjaan[0]['id_jabatan'] . " - " : "") . $riwayatPekerjaan[0]['nama_jabatan'] ?>" disabled autocomplete="off">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -327,5 +327,10 @@
 </div>
 <!-- main content  -->
 
+<script>
+    let nullItem = document.querySelectorAll('.null')
+
+    console.log(nullItem.value)
+</script>
 
 <?= $this->endSection() ?>
