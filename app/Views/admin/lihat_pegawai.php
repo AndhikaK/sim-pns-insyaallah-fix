@@ -41,6 +41,10 @@
 
                                     <label class="checkbox check"> <input type="checkbox" name="Agama" value="agama" <?= array_key_exists('Agama', $columns) ? "checked" : "" ?>> <span>Agama</span></label>
                                     <label class="checkbox check"> <input type="checkbox" name="Tanggal_Lahir" value="ttl" <?= array_key_exists('Tanggal_Lahir', $columns) ? "checked" : "" ?>> <span>Tanggal Lahir</span> </label>
+                                    <label class="checkbox check"> <input type="checkbox" name="Nama_Dikbangspes" value="nama_dikbangspes" <?= array_key_exists('Nama_Dikbangspes', $columns) ? "checked" : "" ?>> <span>Dikbangspes</span> </label>
+                                    <label class="checkbox check"> <input type="checkbox" name="Nama_Dikbangum" value="nama_dikbangum" <?= array_key_exists('Nama_Dikbangum', $columns) ? "checked" : "" ?>> <span>Dikbangum</span> </label>
+                                    <label class="checkbox check"> <input type="checkbox" name="Nama_Dikum" value="jenjang" <?= array_key_exists('Nama_Dikum', $columns) ? "checked" : "" ?>> <span>Dikum</span> </label>
+                                    <label class="checkbox check"> <input type="checkbox" name="Nama_Dikpol" value="nama_dikpol" <?= array_key_exists('Nama_Dikpol', $columns) ? "checked" : "" ?>> <span>Dikpol</span> </label>
                                 </div>
                             </div>
                         </div>

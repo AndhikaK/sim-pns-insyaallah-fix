@@ -9,7 +9,11 @@
         <div class="card p-3 mx-1">
             <!-- Biodata -->
             <div class="row justify-content-end">
-                <a href="<?= base_url('/admin/detailpegawai/htmlToPDF/' . $detailPegawai['nip']) ?>"><button class="btn btn-warning mr-2"><i class="pe-7s-print"></i> Print</button></a>
+
+                <!-- <a href=""><button class="btn btn-warning">print</button></a> -->
+                <!-- <a href="<?php // base_url('/admin/detailpegawai/htmlToPDF/' . $detailPegawai['nip']) 
+                                ?>"><button class="btn btn-warning mr-2"><i class="pe-7s-print"></i> Print</button></a> -->
+                <button class="btn btn-warning mr-2" onclick="printExternal()"><i class="pe-7s-print"></i>Print</button>
                 <button onclick="window.open('/admin/edit_bio/<?= $detailPegawai['nip'] ?>', 'title', 'width=800, height=600')" class="btn btn-primary mr-3">Edit Bio</button>
 
             </div>
@@ -325,12 +329,31 @@
     </div>
 </div>
 </div>
+
 <!-- main content  -->
 
 <script>
     let nullItem = document.querySelectorAll('.null')
 
     console.log(nullItem.value)
+</script>
+
+<script>
+    function printExternal(url) {
+        var printWindow = window.open('<?= base_url('/admin/detailpegawai/checkPrint/' . $detailPegawai['nip']) ?>', 'Print', 'left=200, top=200, width=950, height=500, toolbar=0, resizable=0');
+
+        printWindow.addEventListener('load', function() {
+            if (Boolean(printWindow.chrome)) {
+                printWindow.print();
+                setTimeout(function() {
+                    printWindow.close();
+                }, 500);
+            } else {
+                printWindow.print();
+                printWindow.close();
+            }
+        }, true);
+    }
 </script>
 
 <?= $this->endSection() ?>

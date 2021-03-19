@@ -24,6 +24,11 @@
         display: inline-block;
     }
 
+    .col-6 {
+        width: calc((100% / 12) * 6);
+        display: inline-block;
+    }
+
     .col-10 {
         width: calc((100% / 12) * 10);
         display: inline-block;
@@ -32,6 +37,10 @@
     .col-12 {
         width: calc((100% / 12) * 12);
         display: inline-block;
+    }
+
+    .mr-2 {
+        margin-right: 2%;
     }
 
     .text-center {
@@ -60,6 +69,8 @@
         table-layout: fixed;
         width: 100%;
     }
+
+
 
     thead {
         background-color: grey;

@@ -187,7 +187,13 @@ class Editdetail extends BaseController
                     $this->rwyDikumModel->insert($dataPdd);
                     break;
                 case 'dikbangspes':
-                    dd('ini emang bangspes');
+                    $this->rwyDikbangspesModel->insert($dataPdd);
+                    break;
+                case 'dikbangum':
+                    $this->rwyDikbangumModel->insert($dataPdd);
+                    break;
+                case 'dikpol':
+                    $this->rwyDikpolModel->insert($dataPdd);
                     break;
             }
 

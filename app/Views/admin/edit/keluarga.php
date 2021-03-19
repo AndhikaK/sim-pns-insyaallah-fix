@@ -29,7 +29,7 @@
     </div>
 
     <div class="border border-dark rounded p-3 bg-white">
-        <table class="uk-table m-0 p-0 table-responsive table-riwayat">
+        <table class="table m-0 p-0 table-responsive table-riwayat">
             <thead>
                 <th>Action</th>
                 <?php foreach ($colForm as $name => $value) : ?>
@@ -77,6 +77,9 @@
                     <?php endforeach ?>
                 </tbody>
             <?php else : ?>
+                <tbody>
+                    <td>-</td>
+                </tbody>
             <?php endif ?>
         </table>
     </div>

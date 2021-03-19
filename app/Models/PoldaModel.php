@@ -275,6 +275,10 @@ class PoldaModel extends Model
             ->join("subbag sub", "sub.id_subbag = r_pkj.id_subbag", "LEFT OUTER")
             ->join("jabatan jbt", "jbt.id_jabatan = r_pkj.id_jabatan", "LEFT OUTER")
             ->join("golongan gol", "gol.id_golongan = r_gol.id_golongan", "LEFT OUTER")
+            ->join("riwayat_dikbangspes spes", "spes.nip = p.nip", "LEFT OUTER")
+            ->join("riwayat_dikbangum um", "um.nip = p.nip", "LEFT OUTER")
+            ->join("riwayat_dikum kum", "kum.nip = p.nip", "LEFT OUTER")
+            ->join("riwayat_dikpol pol", "pol.nip = p.nip", "LEFT OUTER")
             ->join("users", "users.nip = p.nip", "LEFT OUTER")
             ->where("users.role != 'admin'");
 

@@ -7,6 +7,22 @@
 
     <?= $this->include('layout/admin-alert') ?>
 
+    <div class="row">
+        <div class="col-4">
+            <div class="dropdown ">
+                <button class="btn btn-secondary dropdown-toggle mb-3" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <?= ucwords(strtolower($pdd)) ?>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href=" <?= base_url("/admin/edit_pdd/$nip/dikum") ?> ">Dikum</a>
+                    <a class="dropdown-item" href=" <?= base_url("/admin/edit_pdd/$nip/dikbangspes") ?> ">Dikbangspes</a>
+                    <a class="dropdown-item" href=" <?= base_url("/admin/edit_pdd/$nip/dikbangum") ?> ">Dikbangum</a>
+                    <a class="dropdown-item" href=" <?= base_url("/admin/edit_pdd/$nip/dikpol") ?>">Dikpol</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="border border-dark rounded p-3 mb-2 bg-white">
         <form action="<?= base_url("/admin/editdetail/tambahitempdd/$nip/$pdd") ?>" method="POST" class="">
             <?php foreach ($colForm as $name => $value) : ?>
@@ -23,7 +39,7 @@
     </div>
 
     <div class="border border-dark rounded p-3 bg-white">
-        <table class="uk-table m-0 p-0">
+        <table class="table m-0 p-0">
             <thead>
                 <th>Action</th>
                 <th>Tahun Kelulusan</th>
@@ -34,7 +50,6 @@
                 <tbody class="tbody-rwy">
                     <?php foreach ($riwayatPDD as $item) : ?>
                         <tr>
-
                             <?php if ($idItem == $item['id_riwayat_' . $pdd]) : ?>
                                 <form action="<?= base_url("/admin/editdetail/editdatapdd/$nip/$pdd/" . $item["id_riwayat_" . $pdd]) ?>" method="POST">
                                     <td>
@@ -71,6 +86,13 @@
                     <?php endforeach ?>
                 </tbody>
             <?php else : ?>
+                <tbody>
+                    <tr>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+                </tbody>
             <?php endif ?>
         </table>
     </div>

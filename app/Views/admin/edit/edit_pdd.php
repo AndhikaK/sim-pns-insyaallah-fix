@@ -10,6 +10,8 @@
                 <h5 class="m-0 p-0">Pendidikan Umum</h5>
             </button>
         </div>
+
+
         <div data-parent="#accordion" id="collapseOne1" aria-labelledby="headingOne" class="collapse show">
             <div class="card-body">
                 <!-- content -->

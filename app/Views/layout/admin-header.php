@@ -50,12 +50,9 @@
                                     <i class="fa fa-angle-down ml-2 opacity-8"></i>
                                 </a>
                                 <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
-                                    <button type="button" tabindex="0" class="dropdown-item">User Account</button>
-                                    <button type="button" tabindex="0" class="dropdown-item">Settings</button>
-                                    <h6 tabindex="-1" class="dropdown-header">Header</h6>
-                                    <button type="button" tabindex="0" class="dropdown-item">Actions</button>
-                                    <div tabindex="-1" class="dropdown-divider"></div>
-                                    <button type="button" tabindex="0" class="dropdown-item">Dividers</button>
+                                    <button onclick="window.open('/admin/account/gantipassview', 'title', 'width=800, height=600')" type="button" tabindex="0" class="dropdown-item">Ganti password</button>
+                                    <button onclick="confirmChangePassword()" type="button" tabindex="0" class="dropdown-item">Reset password</button>
+
                                 </div>
                             </div>
                         </div>
@@ -73,3 +70,14 @@
         </div>
     </div>
 </div>
+
+
+<script>
+    function confirmChangePassword() {
+        let confirmChange = confirm("Yakin untuk mereset password? (Password admin akan direset menjadi 'admin')");
+
+        if (confirmChange) {
+            window.location.href = "<?= base_url('/admin/account/resetpassword') ?>";
+        }
+    }
+</script>
