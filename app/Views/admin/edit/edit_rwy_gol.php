@@ -59,11 +59,21 @@
                                 <td><?= $i++ ?></td>
                                 <td class="d-inline-flex">
                                     <?php if ($edit != 'edit-rwy-gol-' . $item['id_riwayat_golongan']) : ?>
+                                        <a href="<?= base_url('/admin/rwy_golongan/' . $nip . '/edit-rwy-gol-' . $item['id_riwayat_golongan']) ?>" class="svg-col-blue"><i class="pe-7s-pen action-icon"></i></a>
+                                        <a href="<?= count($riwayatGolongan) < 2 ? "#" : base_url('/admin/editdetail/deleterwygolongan/' . $item['id_riwayat_golongan']) ?>" class="svg-col-blue text-danger"><i class="pe-7s-trash action-icon"></i></a>
+
+                                        <?php /* ?>
                                         <a href="<?= base_url('/admin/rwy_golongan/' . $nip . '/edit-rwy-gol-' . $item['id_riwayat_golongan']) ?>" class="uk-icon-link uk-margin-small-right text-primary" uk-icon="file-edit"></a>
                                         <a href="<?= count($riwayatGolongan) < 2 ? "#" : base_url('/admin/editdetail/deleterwygolongan/' . $item['id_riwayat_golongan']) ?>" class="uk-icon-link text-danger" uk-icon="trash"></a>
+                                        <?php */ ?>
                                     <?php elseif ($edit) : ?>
+                                        <button class="clean-button"><i class="pe-7s-diskette action-icon"></i></button>
+                                        <a href="<?= base_url('/admin/rwy_golongan/' . $nip) ?>" class="svg-col-blue text-danger"><i class="pe-7s-close action-icon"></i></a>
+
+                                        <?php /* ?>
                                         <button type="submit" uk-icon="check" class="text-success"></button>
                                         <a href="<?= base_url('/admin/rwy_golongan/' . $nip) ?>" uk-icon="close" class="text-danger"></a>
+                                        <?php */ ?>
                                     <?php endif; ?>
                                 </td>
                                 <?php foreach ($colRwyGolongan as $name => $value) : ?>

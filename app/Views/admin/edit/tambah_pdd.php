@@ -53,6 +53,10 @@
                             <?php if ($idItem == $item['id_riwayat_' . $pdd]) : ?>
                                 <form action="<?= base_url("/admin/editdetail/editdatapdd/$nip/$pdd/" . $item["id_riwayat_" . $pdd]) ?>" method="POST">
                                     <td>
+                                        <button class="clean-button"><i class="pe-7s-diskette action-icon"></i></button>
+                                        <a href="<?= base_url("/admin/editdetail/tambahpdd/$nip/$pdd/") ?>" class="svg-col-blue text-danger"><i class="pe-7s-close action-icon"></i></a>
+
+                                        <?php /* ?>
                                         <button class="icon-button">
                                             simpan
                                             <!-- <img src="/asset/svg/check-circle-solid.svg" class="fa-icon-success fa-icon" alt=""> -->
@@ -61,6 +65,7 @@
                                             <!-- <img src="/asset/svg/window-close-solid.svg" class="fa-icon-danger fa-icon" alt=""> -->
                                             batal
                                         </a>
+                                        <?php */ ?>
                                     </td>
                                     <?php foreach ($colForm as $name => $value) : ?>
                                         <td><input type="text" name="<?= $value ?>" value="<?= $item[$value] ?>"></td>
@@ -69,6 +74,10 @@
                                 </form>
                             <?php else : ?>
                                 <td>
+                                    <a href="<?= base_url("/admin/edit_pdd/$nip/$pdd/" . $item['id_riwayat_' . $pdd]) ?>" class="svg-col-blue"><i class="pe-7s-pen action-icon"></i></a>
+                                    <a href="<?= base_url("/admin/editdetail/deletedatapdd/$nip/$pdd/" . $item['id_riwayat_' . $pdd]) ?>" class="svg-col-blue text-danger"><i class="pe-7s-trash action-icon"></i></a>
+
+                                    <?php /* ?>
                                     <a href="<?= base_url("/admin/edit_pdd/$nip/$pdd/" . $item['id_riwayat_' . $pdd]) ?>" class="">
                                         <!-- <img src="/asset/svg/edit-solid.svg" class="fa-icon-primary fa-icon" alt=""> -->
                                         edit
@@ -77,6 +86,7 @@
                                         <!--  <img src="/asset/svg/trash-solid.svg" class="fa-icon-danger fa-icon" alt=""> -->
                                         hapus
                                     </a>
+                                    <?php */ ?>
                                 </td>
                                 <?php foreach ($colForm as $name => $value) : ?>
                                     <td><?= $item[$value] ?></td>

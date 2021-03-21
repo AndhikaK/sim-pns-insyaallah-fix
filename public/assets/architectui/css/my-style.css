@@ -144,7 +144,12 @@ input:focus + label {
   background-color: blue;
   color: white;
 } */
-
+.clean-button {
+  padding: 0;
+  margin: 0;
+  border: none;
+  background-color: transparent;
+}
 .up-btn {
   border: none;
   border-radius: 5px;

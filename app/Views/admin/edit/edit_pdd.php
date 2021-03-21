@@ -32,12 +32,17 @@
                                             <?php if ($idItem == $item['id_riwayat_dikum']) : ?>
                                                 <form action="<?= base_url("/admin/detailpegawai/editdatapdd/$nip" . $item["id_riwayat_dikum"]) ?>" method="POST">
                                                     <td>
+                                                        <button class="clean-button"><i class="pe-7s-diskette action-icon"></i></button>
+                                                        <a href="<?= base_url("/admin/detailpegawai/tambahpdd/$nip") ?>" class="svg-col-blue text-danger"><i class="pe-7s-close action-icon"></i></a>
+
+                                                        <?php /* ?>
                                                         <button class="icon-button">
                                                             <img src="/asset/svg/check-circle-solid.svg" class="fa-icon-success fa-icon" alt="">
                                                         </button>
                                                         <a href="<?= base_url("/admin/detailpegawai/tambahpdd/$nip") ?>" class="">
                                                             <img src="/asset/svg/window-close-solid.svg" class="fa-icon-danger fa-icon" alt="">
                                                         </a>
+                                                        <?php */ ?>
                                                     </td>
                                                     <?php foreach ($colDikum as $name => $value) : ?>
                                                         <td><input type="text" name="<?= $value ?>" value="<?= $item[$value] ?>"></td>
@@ -46,12 +51,17 @@
                                                 </form>
                                             <?php else : ?>
                                                 <td>
+                                                    <a href="<?= base_url("/admin/detailpegawai/tambahpdd/$nip" . $item['id_riwayat_dikum']) ?>" class="svg-col-blue"><i class="pe-7s-pen action-icon"></i></a>
+                                                    <a href="<?= base_url("/admin/detailpegawai/deletedatapdd/$nip" . $item['id_riwayat_dikum']) ?>" class="svg-col-blue text-danger"><i class="pe-7s-trash action-icon"></i></a>
+
+                                                    <?php /* ?>
                                                     <a href="<?= base_url("/admin/detailpegawai/tambahpdd/$nip" . $item['id_riwayat_dikum']) ?>" class="">
                                                         <img src="/asset/svg/edit-solid.svg" class="fa-icon-primary fa-icon" alt="">
                                                     </a>
                                                     <a href="<?= base_url("/admin/detailpegawai/deletedatapdd/$nip" . $item['id_riwayat_dikum']) ?>" class="">
                                                         <img src="/asset/svg/trash-solid.svg" class="fa-icon-danger fa-icon" alt="">
                                                     </a>
+                                                    <?php */ ?>
                                                 </td>
                                                 <?php foreach ($colDikum as $name => $value) : ?>
                                                     <td><?= $item[$value] ?></td>
