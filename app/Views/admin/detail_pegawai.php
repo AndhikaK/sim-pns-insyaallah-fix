@@ -3,6 +3,18 @@
 
 <?= $this->section('content') ?>
 
+<?php
+if (!isset($riwayatPekerjaan[0]) || !isset($riwayatGolongan[0])) {
+    foreach ($colRwyPekerjaan as $col) {
+        $riwayatPekerjaan[0][$col] = '';
+    }
+
+    foreach ($colRwyGolongan as $col) {
+        $riwayatGolongan[0][$col];
+    }
+}
+?>
+
 <!-- main content  -->
 <div class="row mb-5">
     <div class="col-12">
@@ -153,13 +165,21 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($riwayatPekerjaan as $item) : ?>
+                            <?php if (count($riwayatPekerjaan) > 0) : ?>
+                                <?php foreach ($riwayatPekerjaan as $item) : ?>
+                                    <tr>
+                                        <?php foreach ($colRwyPekerjaan as $colName => $colValue) : ?>
+                                            <td><?= $item[$colValue] ?></td>
+                                        <?php endforeach ?>
+                                    </tr>
+                                <?php endforeach ?>
+                            <?php else : ?>
                                 <tr>
-                                    <?php foreach ($colRwyPekerjaan as $colName => $colValue) : ?>
-                                        <td><?= $item[$colValue] ?></td>
+                                    <?php foreach ($colRwyPekerjaan as $col) : ?>
+                                        <td></td>
                                     <?php endforeach ?>
                                 </tr>
-                            <?php endforeach ?>
+                            <?php endif ?>
                         </tbody>
                     </table>
                 </div>

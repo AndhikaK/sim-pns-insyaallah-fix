@@ -92,7 +92,12 @@
                 backgroundColor: backColor,
             }]
         },
-        options: {}
+        options: {
+            title: {
+                display: true,
+                text: 'Sebaran Pegawai Berdasarkan Satker'
+            }
+        }
     });
 </script>
 

@@ -181,7 +181,7 @@ class Lihatpegawai extends BaseController
     {
         $data = [
             'title' => 'Import Data',
-            'subTitle' => '',
+            'subTitle' => 'Import data pegawai berdasarkan file excel',
             'menuPos' => 'import',
             'navItem' => 2
         ];

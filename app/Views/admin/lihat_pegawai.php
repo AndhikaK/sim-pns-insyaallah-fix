@@ -2,7 +2,6 @@
 
 <?= $this->section('content') ?>
 
-
 <!-- main content  -->
 <div class="row">
     <div class="col ">
