@@ -166,7 +166,7 @@
                             <?php foreach ($riwayatDikbangum as $item) : ?>
                                 <tr class="table-light">
                                     <td class="border"><?= $item['tahun_lulus'] ?></td>
-                                    <td class="border"><?= $item['nama_dikbangspes'] ?></td>
+                                    <td class="border"><?= $item['nama_dikbangum'] ?></td>
                                 </tr>
                             <?php endforeach ?>
                         <?php else : ?>
@@ -196,7 +196,7 @@
                             <?php foreach ($riwayatDikum as $item) : ?>
                                 <tr class="table-light">
                                     <td class="border"><?= $item['tahun_lulus'] ?></td>
-                                    <td class="border"><?= $item['nama_dikbangspes'] ?></td>
+                                    <td class="border"><?= $item['jenjang'] ?></td>
                                 </tr>
                             <?php endforeach ?>
                         <?php else : ?>
@@ -224,7 +224,7 @@
                             <?php foreach ($riwayatDikpol as $item) : ?>
                                 <tr class="table-light">
                                     <td class="border"><?= $item['tahun_lulus'] ?></td>
-                                    <td class="border"><?= $item['nama_dikbangspes'] ?></td>
+                                    <td class="border"><?= $item['nama_dikpol'] ?></td>
                                 </tr>
                             <?php endforeach ?>
                         <?php else : ?>

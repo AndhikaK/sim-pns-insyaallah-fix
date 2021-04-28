@@ -39,7 +39,7 @@
                         </div>
                     </div>
                     <div class="col">
-                        <a href="/format-import/format_riwayat_pekerjaan.xlsx" class="btn btn-primary">Format Excel</a>
+                        <a href="/format-import/format_import_riwayat_pekerjaan.xlsx" class="btn btn-primary">Format Excel</a>
                         <button class="btn btn-success">IMPORT</button>
                     </div>
                 </form>
