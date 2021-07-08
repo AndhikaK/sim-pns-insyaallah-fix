@@ -133,7 +133,6 @@ class Tambahpegawai extends BaseController
             }
         }
 
-
         try {
             $this->pegawaiModel->insert($dataPegawai);
             $this->rwyGolonganModel->insert($dataGolongan);

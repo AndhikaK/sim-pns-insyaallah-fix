@@ -120,7 +120,6 @@ class Detailpegawai extends BaseController
         $colRwyPekerjaan = ['sk' => 'no_sk', 'jabatan' => 'nama_jabatan', 'satker' => 'nama_satker', 'bagian' => 'nama_bagian', 'subbag' => 'nama_subbag', 'periode mulai' => 'periode_mulai', 'periode selesai' => 'periode_selesai'];
         $colRwyGolongan = ['sk' => 'no_sk', 'golongan' => 'id_golongan', 'periode mulai' => 'periode_mulai', 'periode selesai' => 'periode_selesai'];
 
-
         $data = [
             'title' => 'Detail Pegawai',
             'subTitle' => '',
